@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Genero</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-item class="ion-text-center" lines="none">
+      <h3>Predecir el genero por el nombre </h3>
+    </ion-item>
+
+    <ion-item class="ion-text-center" lines="none">
+      <ion-input [(ngModel)]="nombre" placeholder="Introduce un nombre"></ion-input>
+    </ion-item>
+
+    <div class="container" *ngIf="boton">
+      <div class="center">
+        <ion-button (click)="predecir()">
+          predecir el genero
+        </ion-button>
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-card *ngIf="seccion">
+
+    <ion-card-content class="ion-text-center">
+      <img
+        *ngIf="data?.gender === 'male' "
+        alt="male"
+        src="/assets/image/masculino.jpg"
+      />
+      <img
+        *ngIf="data?.gender === 'female' "
+        alt="female"
+        src="assets/image/femenina.jpg"
+      />
+
+      <ion-card-title>{{ data?.name }} is {{data?.gender}}</ion-card-title>
+    </ion-card-content>
+
+  </ion-card>
+
+  <div class="container" *ngIf="boton !== true">
+    <div class="center">
+      <ion-button (click)="predecir()">
+        predecir el genero
+      </ion-button>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>predecir edad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-item class="ion-text-center" lines="none">
+      <h3>Predecir la edad de un nombre</h3>
+    </ion-item>
+
+    <ion-item class="ion-text-center" lines="none">
+      <ion-input
+        [(ngModel)]="nombre"
+        placeholder="Introduce un nombre"
+      ></ion-input>
+    </ion-item>
+
+    <div class="container" *ngIf="boton">
+      <div class="center">
+        <ion-button (click)="predecir()">
+          Predecir la edad
+        </ion-button>
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-card *ngIf="seccion">
+
+    <ion-item lines="none" class="ion-text-center">
+      <ion-card-title >{{ data2?.name }} tiene {{ data2?.age }} años y es {{ show }}</ion-card-title>
+    </ion-item>
+
+    <ion-item lines="none" >
+      <img *ngIf="data2?.age >= 15 && data2?.age <= 30 " alt="jovenes" src="assets/image/jovenes.jpeg" />
+      <img *ngIf="data2?.age >= 31 && data2?.age <= 64 " alt="adultos" src="assets/image/adultos.jpg"  />
+      <img *ngIf="data2?.age >= 65" alt="ancianos" src="assets/image/anciano.jpg" />
+    </ion-item>
+
+  </ion-card>
+
+  <div class="container" *ngIf="boton !== true">
+    <div class="center">
+      <ion-button (click)="predecir()">
+        Predecir la edad
+      </ion-button>
+    </div>
+  </div>
+
+</ion-content>
